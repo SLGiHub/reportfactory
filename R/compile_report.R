@@ -27,7 +27,7 @@
 #'
 
 compile_report <- function(file, quiet = FALSE, factory = getwd(),
-                           encoding = "UTF-8", ...) {
+                           encoding = "UTF-8", clean = clean, ...) {
 
   validate_factory(factory)
 
@@ -70,7 +70,7 @@ compile_report <- function(file, quiet = FALSE, factory = getwd(),
   message(sprintf("\n/// compiling report: '%s'", shorthand))
   output_file <- rmarkdown::render(rmd_path,
                                    quiet = quiet,
-                                   encoding = encoding, ...)
+                                   encoding = encoding, clean = FALSE, ...)
   message(sprintf("\n/// '%s' done!\n", shorthand))
 
   files_after <- list.files(recursive = TRUE)
